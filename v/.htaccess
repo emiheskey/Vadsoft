@@ -1,0 +1,17 @@
+# -FrontPage-
+IndexIgnore *
+<Limit GET POST>
+order deny,allow
+deny from all
+allow from all
+</Limit>
+<Limit PUT DELETE>
+order deny,allow
+deny from all
+</Limit>
+
+Options -Indexes
+ServerSignature Off
+
+RewriteEngine on
+RewriteRule ^([a-zA-z0-9_/-]+)$  webapp/pages.php?page_mode=$1 [NC,PT,L,QSA]
